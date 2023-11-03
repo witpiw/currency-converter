@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: white;
+  --secondary: rgb(13, 19, 19);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: rgb(13, 19, 19);
+    --secondary: white;
+  }
+}
+
+::selection {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+body {
+  padding: 4px 8px;
+  margin: 0;
+  background: var(--primary);
+  color: var(--secondary);
+  font-family: "Montserrat", sans-serif;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+div#root {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header > *:is(h1, h2) {
+  padding: 0;
+  margin: 0;
+}
+
+header > h1 {
+  font-size: 3rem;
+}
+
+header > h2 {
+  font-size: 1.8rem;
+}
+
+main {
+  margin-top: 35vh;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.currency-swap {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--secondary);
+  cursor: pointer;
+}
+
+.currency-swap > svg {
+  fill: var(--secondary);
+  width: 100%;
+  height: 100%;
+  transform: rotate(90deg);
+}
+
+.currency-container {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid var(--secondary);
+}
+
+input {
+  background-color: transparent;
+  color: var(--secondary);
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 200px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+select {
+  appearance: none;
+  text-align: center;
+  padding: 5px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  background: var(--secondary);
+  color: var(--primary);
+}
