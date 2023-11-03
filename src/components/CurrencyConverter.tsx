@@ -59,31 +59,33 @@ function CurrencyConverter() {
         <main>
             <If condition={!!error}>
                 <Then>
-                    <p>{error?.message || "Failed to fetch conversion rates"}</p>
-                </Then>
-            </If>
-            <If condition={!data}>
-                <Then>
-                    <p>Loading...</p>
+                    <p>{"Failed to fetch conversion rates"}</p>
                 </Then>
                 <Else>
-                    <div className="currency-container">
-                        <input type="number" min={0} step="0.01" value={firstValue} onBlur={(e) => handleValueBlur(e.target.value, "first")} onChange={(e) => setFirstValue(e.target.value)} onFocus={(e) => e.target.select()} />
-                        <select name="firstCurrency" value={firstCurrency} onChange={(e) => handleCurrencyChange(e.target.value, 'first')}>
-                            {Object.keys(data?.rates || {}).map((currency, idx) => (
-                                <option key={`first-${idx}`} value={currency}>{currency}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <button className="currency-swap" onClick={swapCurrencies}><IoMdSwap /></button>
-                    <div className="currency-container">
-                        <input type="number" min={0} step="0.01" value={secondValue} onBlur={(e) => handleValueBlur(e.target.value, "second")} onChange={(e) => setSecondValue(e.target.value)} onFocus={(e) => e.target.select()} />
-                        <select name="secondCurrency" value={secondCurrency} onChange={(e) => handleCurrencyChange(e.target.value, 'second')}>
-                            {Object.keys(data?.rates || {}).map((currency, idx) => (
-                                <option key={`second-${idx}`} value={currency}>{currency}</option>
-                            ))}
-                        </select>
-                    </div>
+                    <If condition={!data}>
+                        <Then>
+                            <p>Loading...</p>
+                        </Then>
+                        <Else>
+                            <div className="currency-container">
+                                <input type="number" min={0} step="0.01" value={firstValue} onBlur={(e) => handleValueBlur(e.target.value, "first")} onChange={(e) => setFirstValue(e.target.value)} onFocus={(e) => e.target.select()} />
+                                <select name="firstCurrency" value={firstCurrency} onChange={(e) => handleCurrencyChange(e.target.value, 'first')}>
+                                    {Object.keys(data?.rates || {}).map((currency, idx) => (
+                                        <option key={`first-${idx}`} value={currency}>{currency}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <button className="currency-swap" onClick={swapCurrencies}><IoMdSwap /></button>
+                            <div className="currency-container">
+                                <input type="number" min={0} step="0.01" value={secondValue} onBlur={(e) => handleValueBlur(e.target.value, "second")} onChange={(e) => setSecondValue(e.target.value)} onFocus={(e) => e.target.select()} />
+                                <select name="secondCurrency" value={secondCurrency} onChange={(e) => handleCurrencyChange(e.target.value, 'second')}>
+                                    {Object.keys(data?.rates || {}).map((currency, idx) => (
+                                        <option key={`second-${idx}`} value={currency}>{currency}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </Else>
+                    </If>
                 </Else>
             </If>
         </main>
